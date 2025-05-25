@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "hw_def.h": "c",
+        "usart.h": "c",
+        "cli.h": "c"
+    }
+}

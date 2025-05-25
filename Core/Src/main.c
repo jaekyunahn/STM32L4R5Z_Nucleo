@@ -15,6 +15,7 @@
   *
   ******************************************************************************
   */
+#if 0
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -22,9 +23,11 @@
 #include "adc.h"
 #include "can.h"
 #include "crc.h"
+#include "dma.h"
 #include "i2c.h"
 #include "usart.h"
 #include "rng.h"
+#include "rtc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usb_otg.h"
@@ -32,7 +35,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#endif
+#include "main.h"
+#include "ap.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,12 +65,21 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+static void mainTask(void *argument);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void mainTask(void *argument)
+{
+  UNUSED(argument);
 
+  hwInit();
+  mwInit();
+  apInit();
+
+  apMain();
+}
 /* USER CODE END 0 */
 
 /**
@@ -97,6 +111,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_LPUART1_UART_Init();
   MX_CRC_Init();
   MX_RNG_Init();
@@ -111,12 +126,11 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_USB_OTG_FS_PCD_Init();
+  MX_RTC_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-
+#if 0
   /* USER CODE END 2 */
-
-  /* Init scheduler */
-  osKernelInitialize();
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();
@@ -134,6 +148,20 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   }
+#else
+
+  osThreadId main_task_handle;
+
+  osThreadDef(main_thread, mainTask, osPriorityNormal, 0, 1024);
+  main_task_handle = osThreadCreate(osThread(main_thread), NULL);
+
+  osKernelStart();
+
+  while(1)
+  {
+    Error_Handler();
+  }
+#endif
   /* USER CODE END 3 */
 }
 
@@ -156,10 +184,12 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSI
+                              |RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 2;
