@@ -45,7 +45,7 @@ bool moduleBegin(void)
   {
     for (int i=0; i<info.count; i++)
     {
-      assert(info.p_module[i].priority >= MODULE_PRI_1 && info.p_module[i].priority < MODULE_PRI_MAX);
+      assert_param(info.p_module[i].priority >= MODULE_PRI_1 && info.p_module[i].priority < MODULE_PRI_MAX);
 
       if (info.p_module[i].priority == pri && info.p_module[i].init != NULL)
       {

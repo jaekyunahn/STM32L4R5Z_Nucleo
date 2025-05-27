@@ -93,8 +93,12 @@ typedef enum
 
 typedef enum
 {
-  mADC_Example1 = 0,
-  mADC_Example2,
+  ADC1_1_location_X = 0,
+  ADC1_2_location_Y,
+  ADC1_3,
+  ADC1_4,
+  ADC1_6,
+  CPU_TEMP,
   ADC_PIN_MAX
 } AdcPinName_t;
 

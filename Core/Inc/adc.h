@@ -29,19 +29,31 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "ap_def.h"
+#include "hw_def.h"
 /* USER CODE END Includes */
 
 extern ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN Private defines */
-
+#define ADC_MAX_CH    HW_ADC_MAX_CH
 /* USER CODE END Private defines */
 
 void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+bool    adcInit(void);
+bool    adcIsInit(void);
+int32_t adcRead(uint8_t ch);
+int32_t adcRead8(uint8_t ch);
+int32_t adcRead10(uint8_t ch);
+int32_t adcRead12(uint8_t ch);
+int32_t adcRead16(uint8_t ch);
+uint8_t adcGetRes(uint8_t ch);
+float   adcReadVoltage(uint8_t ch);
+float   adcConvVoltage(uint8_t ch, uint32_t adc_value);
+bool    adcReset(void);
+void    adcWatchdogUpdate(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

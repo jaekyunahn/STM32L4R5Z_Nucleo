@@ -8,7 +8,7 @@ extern "C" {
 #include "hw_def.h"
 
 #include "cli.h"
-//#include "cli_gui.h"
+#include "cli_gui.h"
 #include "util.h"
 //#include "assert.h"
 #include "qbuffer.h"

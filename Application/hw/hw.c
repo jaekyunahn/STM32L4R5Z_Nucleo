@@ -40,7 +40,7 @@ bool hwInit(void)
   rtcInit();
 //
 //  //dmaInit();
-//  adcInit();
+  adcInit();
 //  pwmInit();
 //  spiInit();
 //  i2cInit();

@@ -21,7 +21,7 @@ bool cliModuleInit(void)
   cliOpen(_DEF_UART1, 115200);
 
   ret = threadCreate("cli", cliThread, NULL, _HW_DEF_THREAD_PRI, _HW_DEF_THREAD_STACK * 2);
-  assert(ret);
+  assert_param(ret);
 
   logPrintf("[%s] cliModuleInit()\n", ret ? "\033[32mOK\033[0m":"\033[31mNG\033[0m");
   return ret;

@@ -1,7 +1,5 @@
 {
-    "files.associations": {
-        "hw_def.h": "c",
-        "usart.h": "c",
-        "cli.h": "c"
-    }
+  "cortex-debug.variableUseNaturalFormat": false,
+  "C_Cpp.autoAddFileAssociations": false,
+  "cmake.configureOnOpen": false
 }

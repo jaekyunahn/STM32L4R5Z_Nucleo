@@ -21,8 +21,8 @@ bool helloworldInit(void)
 {
   mutex_lock = xSemaphoreCreateMutex();
   is_init = threadCreate("hello_world", helloworldThread, NULL, _HW_DEF_THREAD_PRI, _HW_DEF_THREAD_STACK);
-  assert(mutex_lock);
-  assert(is_init);
+  assert_param(mutex_lock);
+  assert_param(is_init);
 
   cliAdd("hello_world", cliHelloworld);
 
