@@ -5,7 +5,7 @@
 
 #include "bsp.h"
 
-#define _DEF_FIRMWATRE_VERSION    "V250525-R1"
+#define _DEF_FIRMWATRE_VERSION    "V250529-R1"
 #define _DEF_BOARD_NAME           "STM32L4R5Z_Nucleo"
 
 #define _USE_HW_FAULT
@@ -61,7 +61,7 @@
 #define      HW_SD_EMMC             0
 
 #define _USE_HW_I2C
-#define      HW_I2C_MAX_CH          1
+#define      HW_I2C_MAX_CH          2
 
 #define _USE_HW_SPI
 #define      HW_SPI_MAX_CH          1
@@ -101,5 +101,12 @@ typedef enum
   CPU_TEMP,
   ADC_PIN_MAX
 } AdcPinName_t;
+
+typedef enum
+{
+  I2C_DEVICE_1 = 0,
+  I2C_DEVICE_2,
+  I2C_MAX
+} I2C_t;
 
 #endif

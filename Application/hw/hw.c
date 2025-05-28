@@ -43,7 +43,7 @@ bool hwInit(void)
   adcInit();
 //  pwmInit();
 //  spiInit();
-//  i2cInit();
+  i2cInit();
 //  sdInit();
 //
 //  usbInit();
@@ -52,6 +52,7 @@ bool hwInit(void)
 //
 //  ws2812Init();
 //
+  bh1750Init();
 
   return true;
 }

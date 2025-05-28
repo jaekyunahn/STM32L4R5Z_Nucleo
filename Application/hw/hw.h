@@ -48,6 +48,8 @@ extern "C" {
 #include "gpio.h"
 
 #include "led.h"
+#include "bh1750.h"
+
 
 bool hwInit(void);
 
