@@ -1,7 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:8:6:vApplicationStackOverflowHook	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:15:6:vApplicationMallocFailedHook	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:38:19:HAL_InitTick	56	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:110:6:HAL_SuspendTick	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:122:6:HAL_ResumeTick	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:138:6:HAL_TIM_PeriodElapsedCallback	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\rtos.c:152:6:TIM6_DAC_IRQHandler	8	static

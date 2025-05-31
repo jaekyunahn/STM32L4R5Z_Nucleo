@@ -1,8 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:58:6:logInit	8	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:87:6:logEnable	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:92:6:logDisable	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:97:6:logBoot	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:102:6:logOpen	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:113:6:logBufPrintf	48	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:147:6:logPrintf	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\moduleDriver\src\log.c:182:6:cliCmd	40	static

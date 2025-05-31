@@ -1,5 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\cpu_utils.c:56:6:vApplicationIdleHook	8	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\cpu_utils.c:70:6:vApplicationTickHook	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\cpu_utils.c:92:6:StartIdleMonitor	8	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\cpu_utils.c:105:6:EndIdleMonitor	8	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\cpu_utils.c:120:10:osGetCPUUsage	4	static

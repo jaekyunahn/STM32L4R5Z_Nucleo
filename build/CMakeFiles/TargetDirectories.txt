@@ -1,3 +1,0 @@
-D:/project/fw/mcu/stm32/STM32L4R5Z_Nucleo/build/CMakeFiles/stm32l4r5z-nucleofw.elf.dir
-D:/project/fw/mcu/stm32/STM32L4R5Z_Nucleo/build/CMakeFiles/edit_cache.dir
-D:/project/fw/mcu/stm32/STM32L4R5Z_Nucleo/build/CMakeFiles/rebuild_cache.dir

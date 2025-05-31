@@ -1,3 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\common\core\util.c:7:10:utilConvert8ToU32	24	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\common\core\util.c:20:10:utilConvert8ToU16	24	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\common\core\util.c:72:6:utilUpdateCrc	24	static

@@ -1,6 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:10:6:bno055Init	16	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:49:6:bno055IsInit	4	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:54:6:bno055StartUp	40	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:107:6:bno055FindChip	24	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:115:6:bno055ReadData	96	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bno055.c:161:6:cliCmd	80	static

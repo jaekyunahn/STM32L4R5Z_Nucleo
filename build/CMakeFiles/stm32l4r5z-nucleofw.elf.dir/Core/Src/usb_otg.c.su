@@ -1,3 +1,0 @@
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\usb_otg.c:31:6:MX_USB_OTG_FS_PCD_Init	8	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\usb_otg.c:61:6:HAL_PCD_MspInit	200	static
-D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\usb_otg.c:121:6:HAL_PCD_MspDeInit	24	static
