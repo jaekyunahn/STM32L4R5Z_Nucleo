@@ -53,6 +53,7 @@ bool hwInit(void)
 //  ws2812Init();
 //
   bh1750Init();
-
+  bno055Init();
+  
   return true;
 }

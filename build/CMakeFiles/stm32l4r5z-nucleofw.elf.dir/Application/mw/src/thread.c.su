@@ -1,0 +1,4 @@
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\thread.c:39:6:threadInit	8	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\thread.c:52:6:threadCreate	32	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\thread.c:77:6:threadBegin	16	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\mw\src\thread.c:119:6:cliThread	88	static

@@ -1,0 +1,3 @@
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\freertos.c:68:6:vApplicationGetIdleTaskMemory	24	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\freertos.c:82:6:MX_FREERTOS_Init	48	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Src\freertos.c:121:6:StartDefaultTask	16	static

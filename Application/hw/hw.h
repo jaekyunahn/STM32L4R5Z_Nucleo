@@ -49,7 +49,7 @@ extern "C" {
 
 #include "led.h"
 #include "bh1750.h"
-
+#include "bno055.h"
 
 bool hwInit(void);
 

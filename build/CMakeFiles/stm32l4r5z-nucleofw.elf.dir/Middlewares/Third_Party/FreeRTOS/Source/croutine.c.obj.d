@@ -1,0 +1,20 @@
+CMakeFiles/stm32l4r5z-nucleofw.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\croutine.c \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/FreeRTOS.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stddef.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\lib\gcc\arm-none-eabi\10.3.1\include\stdint.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\stdint.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\machine\_default_types.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\features.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\_newlib_version.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\_intsup.h \
+ d:\tools\arm_toolchain\arm_gcc\gcc-arm-none-eabi-10.3-2021.10\arm-none-eabi\include\sys\_stdint.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Core\Inc/FreeRTOSConfig.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/projdefs.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/portable.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/deprecated_definitions.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F/portmacro.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/mpu_wrappers.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/task.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/list.h \
+ D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Middlewares\Third_Party\FreeRTOS\Source\include/croutine.h

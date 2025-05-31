@@ -1,0 +1,3 @@
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\hello_world\hello_world.c:20:6:helloworldInit	16	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\hello_world\hello_world.c:33:6:helloworldThread	24	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\hello_world\hello_world.c:50:13:cliHelloworld	24	static

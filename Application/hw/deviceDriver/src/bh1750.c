@@ -13,9 +13,6 @@ void bh1750Init(void)
 
   assert_param(i2cIsInit());
 
-  logPrintf("[  ] bh1750Init()\n");
-
-
   if (i2cIsBegin(I2C_DEVICE_1) == false)
   {
     ret = i2cBegin(I2C_DEVICE_1, 100);

@@ -1,0 +1,6 @@
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:10:6:bh1750Init	16	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:49:6:bh1750IsInit	4	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:54:6:bh1750StartUp	24	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:74:6:bh1750FindChip	24	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:82:6:bh1750ReadLux	32	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\hw\deviceDriver\src\bh1750.c:95:6:cliCmd	24	static

@@ -1,0 +1,3 @@
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\system\system.c:8:6:systemInit	8	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\system\system.c:16:6:systemWaitStart	8	static
+D:\project\fw\mcu\stm32\STM32L4R5Z_Nucleo\Application\ap\module\system\system.c:25:6:systemMain	16	static
