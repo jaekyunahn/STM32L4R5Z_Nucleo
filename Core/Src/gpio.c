@@ -43,7 +43,6 @@
      PB14   ------> S_TIM15_CH1
      PB15   ------> SAI2_SD_A
      PD14   ------> S_TIM4_CH3
-     PD15   ------> S_TIM4_CH4
      PC6   ------> SAI2_MCLK_A
      PC8   ------> SDMMC1_D0
      PC9   ------> SDMMC1_D1
@@ -69,6 +68,9 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
   HAL_PWREx_EnableVddIO2();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(W5500_RST_GPIO_Port, W5500_RST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
@@ -125,13 +127,20 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF14_TIM15;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PD14 PD15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15;
+  /*Configure GPIO pin : PD14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_14;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.Alternate = GPIO_AF2_TIM4;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : W5500_RST_Pin */
+  GPIO_InitStruct.Pin = W5500_RST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(W5500_RST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PC6 */
   GPIO_InitStruct.Pin = GPIO_PIN_6;

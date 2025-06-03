@@ -5,7 +5,17 @@ static void cliCmd(cli_args_t *args);
 static bool    is_init  = false;
 static bool    is_found = false;
 static uint8_t i2c_ch   = I2C_DEVICE_1;
-static uint8_t i2c_addr = 0x29;
+static uint8_t i2c_addr = BNO055_I2C_ADDRESS;
+
+uint8_t cal_data[23] = {
+  // 예시 값: 이전에 저장해둔 데이터 삽입
+  0x55,
+  0xFC, 0xFF, 0x03, 0x00, 0xFD, 0xFF, // ACC offsets
+  0xFD, 0xFF, 0x01, 0x00, 0x01, 0x00, // MAG offsets
+  0xFE, 0xFF, 0x00, 0x00, 0x01, 0x00, // GYRO offsets
+  0x2D, 0x00,                         // ACC radius
+  0x2D, 0x00                          // MAG radius
+};
 
 void bno055Init(void)
 {
@@ -55,107 +65,104 @@ bool bno055StartUp(void)
 {
   bool ret;
 
-  // 1. 소프트 리셋: SYS_TRIGGER = 0x20
+  // 1. 소프트 리셋: SYS_TRIGGER = 0x20 >> datasheet : p.76
   uint8_t resetCmd[] = {0x3F, 0x20};
-  ret = i2cWriteData(i2c_ch, i2c_addr, &resetCmd, 2, 50);
+  ret = i2cWriteData(i2c_ch, i2c_addr, &resetCmd, 2, 1000);
   if (!ret)
     return false;
 
   // 2. 리셋 후 안정화 대기 (650ms 이상)
-  delay(1000); // 최소 650ms
+  delay(1000);
 
-  // 3. CONFIG 모드로 전환: OPR_MODE = 0x00
+  // 3. CONFIG 모드로 전환: OPR_MODE = 0x00 >> datasheet : p.76
   uint8_t configMode[] = {0x3D, 0x00};
-  ret = i2cWriteData(i2c_ch, i2c_addr, &configMode, 2, 50);
+  ret = i2cWriteData(i2c_ch, i2c_addr, &configMode, 2, 1000);
   if (!ret)
     return false;
 
-
-  // 4. 외부 크리스탈 사용 설정: SYS_TRIGGER = 0x80
-  // ※ 외부 크리스탈이 연결된 경우에만
+  // 4. 외부 크리스탈 사용 설정: SYS_TRIGGER = 0x80 ※ 외부 크리스탈이 연결된 경우에만 >> datasheet : p.76
   uint8_t extCrystal[] = {0x3F, 0x80};
-  ret = i2cWriteData(i2c_ch, i2c_addr, &extCrystal, 2, 50);
+  ret = i2cWriteData(i2c_ch, i2c_addr, &extCrystal, 2, 1000);
   if (!ret)
     return false;
 
-  // 5. 다시 CONFIG 모드 안정화 대기
-  delay(200); // 내부 준비 시간
+  // 5.캘리브레이션 >> datasheet : p.81 >> 현재는 22바이트 연속 쓰기
+  ret = i2cWriteData(i2c_ch, i2c_addr, &cal_data, 23, 1000);
+  if (!ret)
+    return false;
 
-  // 6. NDOF 모드로 전환: OPR_MODE = 0x0C
+  // 6. 다시 CONFIG 모드 안정화 대기
+  delay(1000);
+
+  // 7. NDOF 모드로 전환: OPR_MODE = 0x0C
   uint8_t ndofMode[] = {0x3D, 0x0C};
-  ret = i2cWriteData(i2c_ch, i2c_addr, &ndofMode, 2, 50);
+  ret = i2cWriteData(i2c_ch, i2c_addr, &ndofMode, 2, 1000);
   if (!ret)
     return false;
 
-  // 7. 모드 변경 후 내부 센서 안정화 대기
-  delay(200);
+  // 8. 모드 변경 후 내부 센서 안정화 대기
+  delay(1000);
 
+  // 9. 현재 모드 확인
   uint8_t startAddr = 0x3D;
-  ret = i2cWriteData(i2c_ch, i2c_addr, &startAddr, 1, 50);
+  ret = i2cWriteData(i2c_ch, i2c_addr, &startAddr, 1, 1000);
   if (!ret)
     return false;
 
-  ret = i2cReadData(i2c_ch, i2c_addr, &startAddr, 1, 50);
+  ret = i2cReadData(i2c_ch, i2c_addr, &startAddr, 1, 1000);
   if (!ret)
     return false;
 
-logPrintf("[BNO_055] mode=%d\n", startAddr);
+  logPrintf("[BNO_055] mode=%d\n", startAddr);
 
   return true;
 }
 
 bool bno055FindChip(void)
 {
-  bool    ret;
+  bool ret = false;
   uint8_t data;
   ret = i2cReadData(i2c_ch, i2c_addr, &data, 1, 50);
+  if(ret)
+  {
+    if(data == BNO055_CHIP_ID)
+    {
+      ret = false;
+    }
+  }
   return ret;
 }
 
 bool bno055ReadData(bno_055_data_t *data)
 {
-  uint8_t startAddr      = 0x08;
-  uint8_t sensorData[18] = {0};
-    bool ret = false;
+  bool ret = false;
+  uint8_t startAddr = 0x1A;
+  uint8_t sensorData[6] = {0};
+
   ret = i2cWriteData(i2c_ch, i2c_addr, &startAddr, 1, 50); // 읽기 시작 주소 지정
   if(ret == false)
   {
-    logPrintf("address write fail\n");
-  }                                                   
-  
-  ret = i2cReadData(i2c_ch, i2c_addr, &sensorData, 18, 50);
+    // logPrintf("address write fail\n");
+  }         
+
+  uint8_t euler_raw[6];
+  ret = i2cReadData(i2c_ch, i2c_addr, &euler_raw, 6, 50);
   if(ret == false)
   {
-    logPrintf("data read fail\n");
+    // logPrintf("data read fail\n");
   }                           
 
-  // 데이터 파싱
-  int16_t ax = (sensorData[1] << 8) | sensorData[0];
-  int16_t ay = (sensorData[3] << 8) | sensorData[2];
-  int16_t az = (sensorData[5] << 8) | sensorData[4];
+  int16_t roll  = ((int16_t)euler_raw[1] << 8) | euler_raw[0];
+  int16_t pitch = ((int16_t)euler_raw[3] << 8) | euler_raw[2];
+  int16_t yaw   = ((int16_t)euler_raw[5] << 8) | euler_raw[4];
 
-  int16_t mx = (sensorData[7] << 8) | sensorData[6];
-  int16_t my = (sensorData[9] << 8) | sensorData[8];
-  int16_t mz = (sensorData[11] << 8) | sensorData[10];
+  float roll_deg  = roll  / 16.0f;
+  float pitch_deg = pitch / 16.0f;
+  float yaw_deg   = yaw   / 16.0f;
 
-  int16_t gx = (sensorData[13] << 8) | sensorData[12];
-  int16_t gy = (sensorData[15] << 8) | sensorData[14];
-  int16_t gz = (sensorData[17] << 8) | sensorData[16];
+  logPrintf("[BNO055] roll=%5d, pitch=%5d, yaw=%5d\n", (int16_t)roll_deg, (int16_t)pitch_deg, (int16_t)yaw_deg);
 
-  // 가속도 (g 단위)
-  float ax_g = (float)ax / 1000.0f;
-  float ay_g = (float)ay / 1000.0f;
-  float az_g = (float)az / 1000.0f;
-
-  // 자기장 (µT)
-  float mx_uT = (float)mx * 1.0f;
-
-  // 자이로 (deg/s)
-  float gx_dps = (float)gx / 16.0f;
-  float gy_dps = (float)gy / 16.0f;
-  float gz_dps = (float)gz / 16.0f;
-
-  return true;
+  return ret;
 }
 
 void cliCmd(cli_args_t *args)
@@ -171,7 +178,6 @@ void cliCmd(cli_args_t *args)
     while (cliKeepLoop())
     {
       bno055ReadData(&tmp);
-      cliPrintf("bno055Read ax=%3d,ay=%3d,az=%3d,mx=%3d,gx=%3d,gy=%3d,gz=%3d\n", (int16_t)tmp.ax_g, (int16_t)tmp.ay_g, (int16_t)tmp.az_g,(int16_t)tmp.mx_uT,(int16_t)tmp.gx_dps,(int16_t)tmp.gy_dps,(int16_t)tmp.gz_dps);
 
       delay(100);
       cliGui()->moveUp(1);

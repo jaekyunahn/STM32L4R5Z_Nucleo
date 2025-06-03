@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define BT_Pin GPIO_PIN_13
 #define BT_GPIO_Port GPIOC
+#define W5500_RST_Pin GPIO_PIN_15
+#define W5500_RST_GPIO_Port GPIOD
 #define LED_Pin GPIO_PIN_7
 #define LED_GPIO_Port GPIOC
 

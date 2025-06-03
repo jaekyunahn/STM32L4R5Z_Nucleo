@@ -8,6 +8,9 @@ extern "C" {
 #include "main.h"
 #include "hw.h"
 
+#define BNO055_I2C_ADDRESS  0x29
+#define BNO055_CHIP_ID      0x40
+
 typedef struct
 {
   // 가속도 (g 단위)
