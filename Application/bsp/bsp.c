@@ -2,7 +2,7 @@
 
 void bspInit(void)
 {
-
+  dmaInit();
 }
 
 uint32_t millis(void)
@@ -26,3 +26,8 @@ void delay(uint32_t ms)
 #endif
 }
 
+void dmaInit(void)
+{
+  __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
+}

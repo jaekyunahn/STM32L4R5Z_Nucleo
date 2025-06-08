@@ -24,19 +24,19 @@ void bh1750Init(void)
   if (ret)
   {
     ret = bh1750FindChip();
-    if (ret)
-      logPrintf("     Found bh1750\n");
-    else
-      logPrintf("     Not Found Chip\n");
+    // if (ret)
+    //   logPrintf("     Found bh1750\n");
+    // else
+    //   logPrintf("     Not Found Chip\n");
 
     is_found = ret;
   }
 
   ret = bh1750StartUp();
-  if (ret)
-    logPrintf("     StartUp bh1750\n");
-  else
-    logPrintf("     StartUp Fail\n");
+  // if (ret)
+  //   logPrintf("     StartUp bh1750\n");
+  // else
+  //   logPrintf("     StartUp Fail\n");
 
   is_init = ret;
 

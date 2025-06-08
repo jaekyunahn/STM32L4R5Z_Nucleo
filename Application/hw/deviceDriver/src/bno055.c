@@ -34,19 +34,19 @@ void bno055Init(void)
   if (ret)
   {
     ret = bno055FindChip();
-    if (ret)
-      logPrintf("     Found bno055\n");
-    else
-      logPrintf("     Not Found Chip\n");
+    // if (ret)
+    //   logPrintf("     Found bno055\n");
+    // else
+    //   logPrintf("     Not Found Chip\n");
 
     is_found = ret;
   }
 
   ret = bno055StartUp();
-  if (ret)
-    logPrintf("     StartUp bno055\n");
-  else
-    logPrintf("     StartUp Fail\n");
+  // if (ret)
+  //   logPrintf("     StartUp bno055\n");
+  // else
+  //   logPrintf("     StartUp Fail\n");
 
   is_init = ret;
 

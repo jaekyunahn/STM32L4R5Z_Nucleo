@@ -35,6 +35,8 @@ static sd_state_t sd_state = SDCARD_IDLE;
 static void cliSd(cli_args_t *args);
 #endif
 
+uint32_t sdmmc_read_buffer[512/4];
+
 /* USER CODE END 0 */
 
 SD_HandleTypeDef hsd1;
@@ -56,7 +58,7 @@ void MX_SDMMC1_SD_Init(void)
   hsd1.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
   hsd1.Init.BusWide = SDMMC_BUS_WIDE_1B;
   hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
-  hsd1.Init.ClockDiv = 11;
+  hsd1.Init.ClockDiv = 2;
   hsd1.Init.Transceiver = SDMMC_TRANSCEIVER_DISABLE;
   if (HAL_SD_Init(&hsd1) != HAL_OK)
   {
@@ -116,6 +118,9 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
     GPIO_InitStruct.Alternate = GPIO_AF12_SDMMC1;
     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+    /* SDMMC1 interrupt Init */
+    HAL_NVIC_SetPriority(SDMMC1_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(SDMMC1_IRQn);
   /* USER CODE BEGIN SDMMC1_MspInit 1 */
 
   /* USER CODE END SDMMC1_MspInit 1 */
@@ -146,6 +151,8 @@ void HAL_SD_MspDeInit(SD_HandleTypeDef* sdHandle)
 
     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_2);
 
+    /* SDMMC1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(SDMMC1_IRQn);
   /* USER CODE BEGIN SDMMC1_MspDeInit 1 */
 
   /* USER CODE END SDMMC1_MspDeInit 1 */
@@ -477,15 +484,14 @@ void cliSd(cli_args_t *args)
   if (args->argc == 2 && args->isStr(0, "read") == true)
   {
     uint32_t number;
-    uint32_t buf[512/4];
 
     number = args->getData(1);
 
-    if (sdReadBlocks(number, (uint8_t *)buf, 1, 100) == true)
+    if (sdReadBlocks(number, (uint8_t *)sdmmc_read_buffer, 1, 100) == true)
     {
       for (int i=0; i<512/4; i++)
       {
-        cliPrintf("%d:%04d : 0x%08X\n", number, i*4, buf[i]);
+        cliPrintf("%d:%04d : 0x%08X\n", number, i*4, sdmmc_read_buffer[i]);
       }
     }
     else

@@ -13,6 +13,7 @@ extern "C" {
 void bspInit(void);
 uint32_t millis(void);
 void delay(uint32_t ms);
+void dmaInit(void);
 
 #ifdef __cplusplus
 }
