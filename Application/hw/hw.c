@@ -44,7 +44,7 @@ bool hwInit(void)
 //  pwmInit();
 //  spiInit();
   i2cInit();
-//  sdInit();
+  sdInit();
 //
 //  usbInit();
 //  usbBegin(USB_CDC_MODE);
@@ -52,6 +52,7 @@ bool hwInit(void)
 //
 //  ws2812Init();
 //
+
   bh1750Init();
   bno055Init();
   

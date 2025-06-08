@@ -42,6 +42,8 @@ extern "C" {
 #include "i2c.h"
 #include "usart.h"
 #include "rng.h"
+#include "rtc.h"
+#include "sdmmc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usb_otg.h"

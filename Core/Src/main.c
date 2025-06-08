@@ -28,6 +28,7 @@
 #include "usart.h"
 #include "rng.h"
 #include "rtc.h"
+#include "sdmmc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usb_otg.h"
@@ -38,6 +39,8 @@
 #endif
 #include "main.h"
 #include "ap.h"
+#include "hw.h"
+#include "mw.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -128,6 +131,7 @@ int main(void)
   MX_USB_OTG_FS_PCD_Init();
   MX_RTC_Init();
   MX_TIM6_Init();
+  MX_SDMMC1_SD_Init();
   /* USER CODE BEGIN 2 */
 #if 0
   /* USER CODE END 2 */

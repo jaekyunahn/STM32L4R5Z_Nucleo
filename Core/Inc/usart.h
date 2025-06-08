@@ -29,6 +29,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
+#include "ap_def.h"
 #include "hw_def.h"
 /* USER CODE END Includes */
 

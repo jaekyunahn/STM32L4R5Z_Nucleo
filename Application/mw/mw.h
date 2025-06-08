@@ -17,6 +17,8 @@
 #include "cpu_utils.h"
 #include "FreeRTOSConfig.h"
 
+#include "fatfs.h"
+
 void mwInit(void);
 
 #endif /* FW_MW_H_ */

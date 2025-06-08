@@ -8,5 +8,6 @@
 
 void mwInit(void)
 {
+  fatfsInit();
   threadInit();
 }

@@ -22,7 +22,14 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
   Application/common/*.c
   Application/hw/*.c
   Application/mw/*.c
+  Application/lib/*.c
 
+  Application/lib/FatFs/src/*.c
+  Application/lib/FatFs/src/option/syscall.c
+  Application/lib/FatFs/src/option/unicode.c
+
+  FATFS/App/*.c
+  FATFS/Target/*.c
 
 #  src/*.c
 #  src/bsp/*.c
@@ -85,6 +92,8 @@ target_include_directories(${EXECUTABLE} PRIVATE
   Application/hw/moduleDriver/inc 
   Application/mw 
   Application/mw/inc 
+  Application/lib 
+  Application/lib/FatFs/src
   Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
 )
 

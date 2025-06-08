@@ -11,6 +11,7 @@
 #define _USE_HW_FAULT
 #define _USE_HW_RTOS
 #define _USE_HW_THREAD
+#define _USE_HW_FATFS
 
 #define _USE_HW_RESET
 #define      HW_RESET_BOOT          1

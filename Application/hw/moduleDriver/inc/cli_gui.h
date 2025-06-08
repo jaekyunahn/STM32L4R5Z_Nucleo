@@ -7,10 +7,6 @@
 
 #include "hw_def.h"
 
-
-#ifdef _USE_HW_CLI_GUI
-
-
 #define CLI_GUI_WIDTH     HW_CLI_GUI_WIDTH
 #define CLI_GUI_HEIGHT    HW_CLI_GUI_HEIGHT
 
@@ -146,9 +142,6 @@ typedef struct
 
 
 cli_gui_api_t *cliGui(void);
-
-
-#endif
 
 #ifdef __cplusplus
  }
